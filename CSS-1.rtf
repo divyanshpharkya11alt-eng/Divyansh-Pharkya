@@ -1,0 +1,490 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2821
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 /* ================= Root Palette & Variables ================= */\
+:root \{\
+    --color-orange: #EE6200;\
+    --color-bright-orange: #FF9A00;\
+    --color-peach: #FBA17E;\
+    --color-teal: #167D8D;\
+    \
+    --bg-cream: #fbf9f6;\
+    --card-white: #ffffff;\
+    --text-dark: #121212;\
+    --text-muted: #666666;\
+    --border-subtle: #eae3db;\
+\}\
+\
+/* ================= Reset & Base Styles ================= */\
+* \{\
+    box-sizing: border-box;\
+    margin: 0;\
+    padding: 0;\
+\}\
+\
+html \{\
+    scroll-behavior: smooth;\
+\}\
+\
+body \{\
+    font-family: 'Plus Jakarta Sans', sans-serif, system-ui;\
+    background-color: var(--bg-cream);\
+    color: var(--text-dark);\
+    line-height: 1.6;\
+\}\
+\
+/* ================= Cinematic Hero & Sticky Scrolling Container ================= */\
+.hero-sticky-container \{\
+    position: relative;\
+    width: 100%;\
+    height: 100vh;\
+    overflow: hidden;\
+    display: flex;\
+    justify-content: center;\
+    align-items: center;\
+\}\
+\
+.hero-bg \{\
+    position: fixed;\
+    top: 0;\
+    left: 0;\
+    width: 100vw;\
+    height: 100vh;\
+    z-index: -2;\
+\}\
+\
+.hero-photo \{\
+    width: 100%;\
+    height: 100%;\
+    object-fit: cover;\
+    filter: contrast(1.15) brightness(0.85) saturate(1.1);\
+\}\
+\
+.hero-overlay \{\
+    position: absolute;\
+    top: 0;\
+    left: 0;\
+    width: 100%;\
+    height: 100%;\
+    background: linear-gradient(135deg, rgba(18,18,18,0.65) 0%, rgba(22,125,141,0.3) 100%);\
+    z-index: -1;\
+\}\
+\
+/* Hero Content & Typewriter */\
+.hero-content \{\
+    position: absolute;\
+    z-index: 5;\
+    text-align: center;\
+    animation: fadeOutHero 1s ease forwards;\
+    animation-timeline: scroll();\
+    animation-range: 0vh 35vh;\
+\}\
+\
+.typewriter-wrap \{\
+    display: inline-block;\
+    overflow: hidden;\
+    white-space: nowrap;\
+    border-right: 3px solid var(--color-bright-orange);\
+    animation: typing 2.2s steps(25, end), blink-caret 0.75s step-end infinite;\
+    max-width: fit-content;\
+    margin: 0 auto;\
+\}\
+\
+.hero-name \{\
+    font-size: 4rem;\
+    font-weight: 800;\
+    color: #ffffff;\
+    letter-spacing: -1.5px;\
+\}\
+\
+.hero-tagline \{\
+    font-size: 1.25rem;\
+    color: var(--color-peach);\
+    margin-top: 12px;\
+    font-weight: 600;\
+\}\
+\
+/* ================= Scattered Adjectives Typography ================= */\
+.adjectives-composition \{\
+    position: absolute;\
+    width: 100%;\
+    height: 100%;\
+    pointer-events: none;\
+    z-index: 3;\
+\}\
+\
+.adj \{\
+    position: absolute;\
+    font-weight: 800;\
+    text-transform: uppercase;\
+    letter-spacing: 2px;\
+    padding: 8px 16px;\
+    border-radius: 30px;\
+    backdrop-filter: blur(6px);\
+    opacity: 0.85;\
+    transition: opacity 0.3s ease;\
+\}\
+\
+/* Individual Adjective Styles & Palette Distribution */\
+.tag-workaholic \{ top: 12%; left: 8%; font-size: 1.1rem; color: #fff; background: rgba(238,98,0,0.4); transform: rotate(-8deg); \}\
+.tag-creative \{ top: 15%; right: 10%; font-size: 1.4rem; color: #fff; background: rgba(22,125,141,0.5); transform: rotate(6deg); \}\
+.tag-filmmaker \{ bottom: 22%; left: 10%; font-size: 1.8rem; color: var(--color-bright-orange); background: rgba(18,18,18,0.6); transform: rotate(5deg); \}\
+.tag-storyteller \{ top: 38%; left: 4%; font-size: 1.2rem; color: #fff; background: rgba(251,161,126,0.4); transform: rotate(-4deg); \}\
+.tag-communicator \{ bottom: 18%; right: 12%; font-size: 1.3rem; color: #fff; background: rgba(22,125,141,0.45); transform: rotate(-6deg); \}\
+.tag-curious \{ top: 28%; right: 6%; font-size: 1rem; color: var(--color-peach); background: rgba(18,18,18,0.5); transform: rotate(12deg); \}\
+.tag-ambitious \{ top: 75%; left: 35%; font-size: 1rem; color: #fff; background: rgba(238,98,0,0.5); transform: rotate(-3deg); \}\
+.tag-experimental \{ top: 8%; left: 38%; font-size: 0.95rem; color: var(--color-bright-orange); background: rgba(18,18,18,0.4); transform: rotate(2deg); \}\
+.tag-observant \{ bottom: 8%; left: 45%; font-size: 1.1rem; color: #fff; background: rgba(22,125,141,0.4); transform: rotate(4deg); \}\
+.tag-performer \{ top: 45%; right: 4%; font-size: 1.25rem; color: #fff; background: rgba(238,98,0,0.45); transform: rotate(8deg); \}\
+.tag-guitarist \{ top: 58% ; left: 6%; font-size: 1.5rem; color: var(--color-bright-orange); background: rgba(18,18,18,0.5); transform: rotate(-10deg); \}\
+.tag-speaker \{ bottom: 42%; right: 6%; font-size: 1rem; color: #fff; background: rgba(251,161,126,0.4); transform: rotate(5deg); \}\
+.tag-stage \{ top: 22%; left: 25%; font-size: 0.9rem; color: #fff; background: rgba(22,125,141,0.4); transform: rotate(-12deg); \}\
+.tag-solver \{ bottom: 30% ; left: 30%; font-size: 0.9rem; color: var(--color-bright-orange); background: rgba(18,18,18,0.45); transform: rotate(7deg); \}\
+.tag-detail \{ top: 68% ; right: 28%; font-size: 0.85rem; color: #fff; background: rgba(238,98,0,0.4); transform: rotate(-5deg); \}\
+.tag-visionary \{ top: 32% ; left: 32%; font-size: 1.2rem; color: #fff; background: rgba(251,161,126,0.45); transform: rotate(3deg); \}\
+\
+/* ================= Know Me & Subpage Navigation Layer ================= */\
+.know-me-overlay \{\
+    position: absolute;\
+    z-index: 6;\
+    text-align: center;\
+    width: 90%;\
+    max-width: 900px;\
+    padding: 40px;\
+    background: rgba(18, 18, 18, 0.85);\
+    backdrop-filter: blur(12px);\
+    border-radius: 16px;\
+    border: 1px solid rgba(255, 255, 255, 0.15);\
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);\
+\}\
+\
+.know-me-title \{\
+    font-size: 3rem;\
+    font-weight: 800;\
+    color: #ffffff;\
+    margin-bottom: 8px;\
+\}\
+\
+.know-me-subtitle \{\
+    font-size: 1.05rem;\
+    color: var(--color-peach);\
+    margin-bottom: 28px;\
+    font-weight: 500;\
+\}\
+\
+.subpage-nav-grid \{\
+    display: grid;\
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));\
+    gap: 16px;\
+\}\
+\
+.subpage-link \{\
+    display: block;\
+    padding: 16px 24px;\
+    background: rgba(255, 255, 255, 0.05);\
+    border: 1px solid rgba(255, 255, 255, 0.15);\
+    color: #ffffff;\
+    text-decoration: none;\
+    font-weight: 700;\
+    font-size: 1.05rem;\
+    border-radius: 8px;\
+    transition: all 0.25s ease;\
+\}\
+\
+.subpage-link:hover \{\
+    background: var(--color-teal);\
+    border-color: var(--color-teal);\
+    transform: translateY(-3px);\
+    box-shadow: 0 8px 20px rgba(22,125,141,0.4);\
+\}\
+\
+.teal-accent:hover \{ background: var(--color-teal); border-color: var(--color-teal); \}\
+.orange-accent:hover \{ background: var(--color-orange); border-color: var(--color-orange); \}\
+.peach-accent:hover \{ background: var(--color-orange); border-color: var(--color-orange); color: #fff; \}\
+.bright-accent:hover \{ background: var(--color-bright-orange); border-color: var(--color-bright-orange); color: #121212; \}\
+\
+/* ================= Subpages Container & Sections ================= */\
+.subpages-container \{\
+    position: relative;\
+    z-index: 10;\
+    background-color: var(--bg-cream);\
+    padding-top: 60px;\
+\}\
+\
+.subpage-section \{\
+    min-height: 100vh;\
+    padding: 100px 24px 60px 24px;\
+    max-width: 900px;\
+    margin: 0 auto;\
+    border-bottom: 1px solid var(--border-subtle);\
+    display: flex;\
+    flex-direction: column;\
+    justify-content: center;\
+\}\
+\
+.subpage-header \{\
+    margin-bottom: 36px;\
+\}\
+\
+.subpage-tag \{\
+    font-family: monospace;\
+    font-size: 0.95rem;\
+    color: var(--color-teal);\
+    font-weight: 700;\
+    text-transform: uppercase;\
+    letter-spacing: 1px;\
+\}\
+\
+.subpage-header h2 \{\
+    font-size: 2.8rem;\
+    font-weight: 800;\
+    color: var(--text-dark);\
+    margin-top: 6px;\
+    letter-spacing: -1px;\
+\}\
+\
+.subpage-card \{\
+    background-color: var(--card-white);\
+    border: 1px solid var(--border-subtle);\
+    padding: 36px;\
+    border-radius: 12px;\
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);\
+\}\
+\
+.subpage-card h3 \{\
+    font-size: 1.35rem;\
+    color: var(--text-dark);\
+    font-weight: 700;\
+    margin-bottom: 6px;\
+\}\
+\
+.sub-meta \{\
+    font-size: 0.9rem;\
+    font-weight: 600;\
+    color: var(--color-teal);\
+    margin-bottom: 14px;\
+\}\
+\
+.subpage-card p \{\
+    color: var(--text-muted);\
+    font-size: 1.05rem;\
+\}\
+\
+.back-to-top \{\
+    display: inline-block;\
+    margin-top: 32px;\
+    text-decoration: none;\
+    font-weight: 700;\
+    color: var(--text-dark);\
+    font-size: 0.9rem;\
+    transition: color 0.2s ease;\
+\}\
+\
+.back-to-top:hover \{\
+    color: var(--color-teal);\
+\}\
+\
+/* Skills Grid */\
+.skills-grid-box \{\
+    display: flex;\
+    flex-wrap: wrap;\
+    gap: 14px;\
+\}\
+\
+.skill-pill \{\
+    background-color: rgba(22, 125, 141, 0.1);\
+    color: var(--color-teal);\
+    padding: 12px 24px;\
+    border-radius: 30px;\
+    font-weight: 700;\
+    font-size: 1rem;\
+    border: 1px solid rgba(22, 125, 141, 0.2);\
+\}\
+\
+/* Paper Resume Box */\
+.paper-box \{\
+    background: #ffffff;\
+    padding: 48px;\
+    border-radius: 12px;\
+    border: 1px solid var(--border-subtle);\
+\}\
+\
+.paper-box h1 \{\
+    font-size: 2rem;\
+    margin-bottom: 4px;\
+\}\
+\
+.paper-contact \{\
+    font-size: 0.85rem;\
+    color: var(--text-muted);\
+    margin-bottom: 28px;\
+    padding-bottom: 16px;\
+    border-bottom: 2px solid var(--text-dark);\
+\}\
+\
+.paper-box h3 \{\
+    font-size: 1.1rem;\
+    text-transform: uppercase;\
+    letter-spacing: 1px;\
+    color: var(--color-teal);\
+    margin-top: 24px;\
+    margin-bottom: 8px;\
+    border-bottom: 1px solid var(--border-subtle);\
+    padding-bottom: 4px;\
+\}\
+\
+.paper-box p \{\
+    font-size: 0.95rem;\
+    color: var(--text-dark);\
+    margin-bottom: 8px;\
+\}\
+\
+.btn-download \{\
+    display: inline-block;\
+    padding: 10px 20px;\
+    background-color: var(--color-orange);\
+    color: #ffffff;\
+    font-weight: 700;\
+    text-decoration: none;\
+    border-radius: 6px;\
+    margin-top: 12px;\
+\}\
+\
+.btn-download:hover \{\
+    background-color: #d25500;\
+\}\
+\
+/* ================= Footer Section ================= */\
+.portfolio-footer \{\
+    background-color: var(--text-dark);\
+    color: #ffffff;\
+    padding: 100px 24px;\
+    text-align: center;\
+\}\
+\
+.portfolio-footer h3 \{\
+    font-size: 2.5rem;\
+    font-weight: 800;\
+    margin-bottom: 12px;\
+\}\
+\
+.portfolio-footer p \{\
+    color: #a0aec0;\
+    font-size: 1.1rem;\
+    margin-bottom: 36px;\
+\}\
+\
+.footer-cta \{\
+    display: flex;\
+    justify-content: center;\
+    gap: 16px;\
+    flex-wrap: wrap;\
+    margin-bottom: 48px;\
+\}\
+\
+.email-btn, .linkedin-btn \{\
+    padding: 14px 28px;\
+    font-weight: 700;\
+    font-size: 1rem;\
+    border-radius: 8px;\
+    text-decoration: none;\
+    transition: transform 0.2s ease;\
+\}\
+\
+.email-btn \{\
+    background-color: var(--color-teal);\
+    color: #ffffff;\
+\}\
+\
+.linkedin-btn \{\
+    background-color: rgba(255,255,255,0.1);\
+    color: #ffffff;\
+    border: 1px solid rgba(255,255,255,0.2);\
+\}\
+\
+.email-btn:hover, .linkedin-btn:hover \{\
+    transform: translateY(-2px);\
+\}\
+\
+.footer-copy \{\
+    font-size: 0.85rem;\
+    color: #718096;\
+\}\
+\
+/* ================= Keyframe Animations ================= */\
+@keyframes typing \{\
+    from \{ width: 0; \}\
+    to \{ width: 100%; \}\
+\}\
+\
+@keyframes blink-caret \{\
+    from, to \{ border-color: transparent; \}\
+    50% \{ border-color: var(--color-bright-orange); \}\
+\}\
+\
+@keyframes fadeOutHero \{\
+    0% \{ opacity: 1; transform: scale(1); \}\
+    100% \{ opacity: 0; transform: scale(0.95); pointer-events: none; \}\
+\}\
+\
+/* ================= Responsive Design (<700px) ================= */\
+@media (max-width: 700px) \{\
+    .hero-name \{\
+        font-size: 2.3rem;\
+    \}\
+    \
+    .know-me-title \{\
+        font-size: 2.2rem;\
+    \}\
+    \
+    .know-me-overlay \{\
+        padding: 24px;\
+        width: 95%;\
+    \}\
+    \
+    .subpage-nav-grid \{\
+        grid-template-columns: 1fr;\
+    \}\
+    \
+    .adjectives-composition \{\
+        display: none;\
+    \}\
+    \
+    .subpage-section \{\
+        padding: 80px 16px 40px 16px;\
+    \}\
+    \
+    .subpage-header h2 \{\
+        font-size: 2rem;\
+    \}\
+\}\
+\
+/* ================= Print Stylesheet (Single A4 Page) ================= */\
+@media print \{\
+    body * \{\
+        visibility: hidden;\
+    \}\
+    \
+    #resume, #resume * \{\
+        visibility: visible;\
+    \}\
+    \
+    #resume \{\
+        position: absolute;\
+        left: 0;\
+        top: 0;\
+        width: 100%;\
+        background: #ffffff;\
+        padding: 0;\
+        margin: 0;\
+        border: none;\
+    \}\
+    \
+    .btn-download, .subpage-tag, .back-to-top \{\
+        display: none;\
+    \}\
+\}}
